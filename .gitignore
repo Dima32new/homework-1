@@ -1,0 +1,49 @@
+/******************************************************************
+1. Найдите простую замену фрагменту кода без использования операторов
+uint8_t st;
+uint8_t res;
+switch (st)
+{
+case 0: res=26; break;
+case 1: res=65; break;
+case 2: res=234;break;
+case 3: res=31; break;
+case 4: res=25;
+case 5: res=25;
+case 6: res=25; break;
+}
+
+*******************************************************************/
+
+// вариант 1.
+ char slovo_mas[]={26,65,234,31,25,25,25};
+
+char nub_byte(char st) // st - номер байта который необходимо получить
+ { st--;
+   return  res=*(slovo_mas+st);
+ }
+
+int main()
+{ char n_byte;
+
+n_byt=nub_byte(3); // в переменную n_byt будет получен 3 байт  n_byt=234;
+return 0;
+}
+
+
+// вариант 2. 
+
+// slovo = 0x1919191fEA411a соответствует 25,25,25,31,234,65,26 
+
+char nub_byte(unsigned long long slovo,unsigned char st) // st - номер байта который необходимо получить
+ { char res;
+  st--;
+  res=(char*)(slovo>>(8*st));
+  return res;
+ } 
+ 
+ int main()
+{ char n_byte;
+  n_byt=nub_byte(0x1919191fEA411a,4); // в переменную n_byt будет получен 3 байт = 0x1f (31)
+  return 0;
+}
